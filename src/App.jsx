@@ -1,5 +1,4 @@
 import Todo from "./components/Todo";
-import styled from "styled-components";
 
 function App() {
   return (
@@ -7,9 +6,9 @@ function App() {
       <h1>
         What is your source of <strong>focus</strong> today?
       </h1>
-      <StyledContainer>
+      <div>
         <Todo />
-      </StyledContainer>
+      </div>
     </>
   );
 }
