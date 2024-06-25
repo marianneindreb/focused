@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const hey = '';
 
@@ -8,7 +8,7 @@ const Todo = () => {
 
   const addGoal = () => {
     const goal = {
-      id: goals.length === 0 ? 1 : goals[goals.length - 1].id + 1,
+      id: goals.length + 1,
       goalName: newGoal,
       checked: false,
     };
@@ -44,14 +44,14 @@ const Todo = () => {
       </div>
       <div className="list">
         {goals.map((goal) => (
-          <div>
+          <div key={goal.id}>
             <div>
               <input
                 type="checkbox"
                 checked={goal.checked}
                 onChange={() => checkGoal(goal.id)}
               />
-              <div checked={goal.checked}>{goal.goalName}</div>
+              <p>{goal.goalName}</p>
               <button onClick={() => deleteGoal(goal.id)}>X</button>
             </div>
             <hr />
