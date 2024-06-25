@@ -1,18 +1,19 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import { useState } from 'react';
+
+const hey = '';
 
 const Todo = () => {
   const [goals, setGoals] = useState([]);
-  const [newGoal, setNewGoal] = useState("");
+  const [newGoal, setNewGoal] = useState('');
 
   const addGoal = () => {
     const goal = {
-      id: goals.length === 0 ? 1 : goals[goals.length - 1].id + 1,
+      id: goals.length + 1,
       goalName: newGoal,
       checked: false,
     };
     setGoals([...goals, goal]);
-    setNewGoal("");
+    setNewGoal('');
   };
 
   const deleteGoal = (id) => {
@@ -21,9 +22,7 @@ const Todo = () => {
 
   const checkGoal = (id) => {
     setGoals(
-      goals.map((goal) =>
-        goal.id === id ? { ...goal, checked: !goal.checked } : goal
-      )
+      goals.map((goal) => (goal.id === id ? { ...goal, checked: !goal.checked } : goal)),
     );
   };
 
@@ -32,9 +31,9 @@ const Todo = () => {
   };
 
   return (
-    <StyledContainer>
+    <div>
       <h3>Set todays goals!</h3>
-      <StyledInput>
+      <div>
         <input
           type="text"
           placeholder="New goal.."
@@ -42,26 +41,24 @@ const Todo = () => {
           onChange={handleInputChange}
         />
         <button onClick={addGoal}>+</button>
-      </StyledInput>
+      </div>
       <div className="list">
         {goals.map((goal) => (
-          <div>
-            <StyledGoal>
+          <div key={goal.id}>
+            <div>
               <input
                 type="checkbox"
                 checked={goal.checked}
                 onChange={() => checkGoal(goal.id)}
               />
-              <StyledGoalName checked={goal.checked}>
-                {goal.goalName}
-              </StyledGoalName>
+              <p>{goal.goalName}</p>
               <button onClick={() => deleteGoal(goal.id)}>X</button>
-            </StyledGoal>
+            </div>
             <hr />
           </div>
         ))}
       </div>
-    </StyledContainer>
+    </div>
   );
 };
 
@@ -92,7 +89,7 @@ const StyledGoalName = styled.p`
   margin: 0 10px;
   flex-grow: 1;
   opacity: ${({ checked }) => (checked ? 0.5 : 1)};
-  text-decoration: ${({ checked }) => (checked ? "line-through" : "none")};
+  text-decoration: ${({ checked }) => (checked ? 'line-through' : 'none')};
 `;
 
 const StyledInput = styled.div`
