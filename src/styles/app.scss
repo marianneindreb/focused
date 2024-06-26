@@ -19,6 +19,98 @@ h1 {
   font-weight: normal;
   padding: 20px;
 }
+.top-wrapper {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.app-container {
+  display: grid;
+  min-height: 720px;
+  max-height: 900px;
+  min-width: 700px;
+  max-width: 1400px;
+  grid-gap: 10px;
+  padding: 10px;
+  grid-template-areas:
+    'todo calendar water player'
+    'todo pomodoro quote player'
+    'todo pomodoro image-container player'
+    'clock pomodoro image-container weather';
+  grid-template-columns: repeat(4, 1fr);
+
+  .calendar-container {
+    grid-area: calendar;
+  }
+  .clock-container {
+    grid-area: clock;
+  }
+  .image-container {
+    grid-area: image-container;
+  }
+  .quote-container {
+    grid-area: quote;
+  }
+  .player-container {
+    grid-area: player;
+  }
+  .pomodoro-container {
+    grid-area: pomodoro;
+  }
+  .water-container {
+    grid-area: water;
+  }
+  .weather-container {
+    grid-area: weather;
+  }
+  .todo-container {
+    grid-area: todo;
+  }
+}
+
+.widget-container {
+  border-radius: 20px;
+  padding: 20px;
+  width: 330px;
+  background-color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .app-container {
+    grid-template-areas:
+      'todo calendar'
+      'water player'
+      'pomodoro quote'
+      'image-container clock'
+      'weather weather';
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    grid-template-areas:
+      'todo'
+      'calendar'
+      'water'
+      'player'
+      'pomodoro'
+      'quote'
+      'image-container'
+      'clock'
+      'weather';
+    grid-template-columns: 1fr;
+  }
+}
 
 @import './todo';
 @import './music-player';
+@import './calendar';
+@import './clock';
+@import './pomodoro-timer';
+@import './weather-widget';
+@import './water-counter';
+@import './motivational-quote';
+@import './image-widget';

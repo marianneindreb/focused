@@ -64,7 +64,7 @@ const MusicPlayer = () => {
   };
 
   return (
-    <div className="player-container">
+    <div className="player-container widget-container">
       <div className="song-container">
         <img alt={currentSong.name} src={currentSong.cover} />
         <h3>{currentSong.name}</h3>
