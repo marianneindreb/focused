@@ -1,3 +1,4 @@
+import MusicPlayer from './components/MusicPlayer';
 import Todo from './components/Todo';
 import './styles/app.scss';
 
@@ -10,6 +11,7 @@ function App() {
       <div>
         <Todo />
       </div>
+      <MusicPlayer />
     </>
   );
 }
