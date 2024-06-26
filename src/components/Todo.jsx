@@ -29,7 +29,7 @@ const Todo = () => {
   };
 
   return (
-    <div className="container">
+    <div className="todo-container widget-container">
       <h3>Set todays goals</h3>
       <div className="input-container">
         <input
