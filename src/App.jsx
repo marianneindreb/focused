@@ -1,4 +1,5 @@
 import Todo from './components/Todo';
+import './styles/app.scss';
 
 function App() {
   return (
@@ -12,12 +13,5 @@ function App() {
     </>
   );
 }
-
-const StyledContainer = styled.div`
-  display: flex;
-  padding: 20px;
-  align-items: center;
-  justify-content: space-between;
-`;
 
 export default App;
