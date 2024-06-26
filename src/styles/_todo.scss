@@ -1,0 +1,62 @@
+.container {
+  border-radius: 20px;
+  width: 350px;
+  height: 55vh;
+  padding: 20px;
+  margin: 20px;
+  background-color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    padding-bottom: 10px;
+  }
+
+  p {
+    margin: 0 10px;
+    flex-grow: 1;
+  }
+
+  button {
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+  }
+}
+
+.checked {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.goals-container {
+  max-height: calc(45vh - 60px);
+  overflow-y: auto;
+}
+
+.goals-container hr {
+  margin: 5px 0;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.input-container {
+  input {
+    padding: 10px;
+    width: 80%;
+    margin: 0 5px 20px 0;
+  }
+  button {
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+  }
+}
