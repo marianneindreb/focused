@@ -7,6 +7,7 @@ import WeatherWidget from './components/WeatherWidget';
 import WaterCounter from './components/WaterCounter';
 import MotivationalQuote from './components/MotivationalQuote';
 import ImageWidget from './components/ImageWidget';
+import DarkMode from './components/DarkMode';
 import './styles/app.scss';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <h1>
         What is your source of <strong>focus</strong> today?
       </h1>
+      <DarkMode />
       <div className="app-container">
         <Todo />
         <Clock />

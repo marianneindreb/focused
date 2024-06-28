@@ -10,7 +10,7 @@
 
   button {
     background-color: transparent;
-    border: 1px solid white;
+    border: none;
     border-radius: 5px;
     width: 30px;
     height: 30px;
@@ -24,7 +24,7 @@
 }
 
 .goals-container {
-  max-height: calc(45vh - 60px);
+  max-height: calc(40vh - 60px);
   overflow-y: auto;
 }
 
@@ -46,7 +46,7 @@
   }
   button {
     background-color: transparent;
-    border: 1px solid black;
+    border: 1px solid var(--body_color);
     border-radius: 5px;
     width: 40px;
     height: 40px;
