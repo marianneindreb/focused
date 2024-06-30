@@ -11,20 +11,22 @@ const Todo: React.FC = () => {
   const [newGoal, setNewGoal] = useState<string>('');
 
   const addGoal = () => {
-    const goal: Goal = {
-      id: goals.length + 1,
-      goalName: newGoal,
-      checked: false,
-    };
-    setGoals([...goals, goal]);
+    setGoals((currentGoals) => {
+      const goal: Goal = {
+        id: currentGoals.length + 1,
+        goalName: newGoal,
+        checked: false,
+      };
+      return [...goals, goal];
+    });
     setNewGoal('');
   };
 
   const deleteGoal = (id: number) => {
-    setGoals(goals.filter((goal) => goal.id !== id));
+    setGoals((currentGoals) => currentGoals.filter((goal) => goal.id !== id));
   };
 
-  const checkGoal = (id: number) => {
+  const toggleCheck = (id: number) => {
     setGoals(
       goals.map((goal) => (goal.id === id ? { ...goal, checked: !goal.checked } : goal)),
     );
@@ -36,7 +38,7 @@ const Todo: React.FC = () => {
 
   return (
     <div className="todo-container widget-container">
-      <h3>Set todays goals</h3>
+      <h3>Set today's goals</h3>
       <div className="input-container">
         <input
           type="text"
@@ -53,7 +55,7 @@ const Todo: React.FC = () => {
               <input
                 type="checkbox"
                 checked={goal.checked}
-                onChange={() => checkGoal(goal.id)}
+                onChange={() => toggleCheck(goal.id)}
               />
               <p className={goal.checked ? 'checked' : ''}> {goal.goalName} </p>
               <button onClick={() => deleteGoal(goal.id)}>X</button>
@@ -66,4 +68,4 @@ const Todo: React.FC = () => {
   );
 };
 
-export default Todo;
+export { Todo };

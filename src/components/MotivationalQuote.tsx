@@ -6,4 +6,4 @@ const MotivationalQuote = () => {
   );
 };
 
-export default MotivationalQuote;
+export { MotivationalQuote };

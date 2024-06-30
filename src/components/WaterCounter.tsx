@@ -7,4 +7,4 @@ const WaterCounter = () => {
   );
 };
 
-export default WaterCounter;
+export { WaterCounter };

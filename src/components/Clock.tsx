@@ -9,7 +9,7 @@ interface ClockObject {
 
 function getTime(): ClockObject {
   const time = new Date();
-  let hours24 = time.getHours();
+  const hours24 = time.getHours();
   const minutes = time.getMinutes();
   const timeOfDay = hours24 >= 12 ? 'PM' : 'AM';
 
@@ -27,15 +27,15 @@ const Clock: React.FC = () => {
   const [is24HourFormat, setIs24HourFormat] = useState<boolean>(false);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
+    const timeInterval = setInterval(() => {
       setCurrentTime(getTime());
     }, 30000);
 
-    return () => clearInterval(intervalId);
+    return () => clearInterval(timeInterval);
   }, []);
 
   const toggleTimeFormat = () => {
-    setIs24HourFormat(!is24HourFormat);
+    setIs24HourFormat((prevState) => !prevState);
   };
 
   const formatTime = (hours: number, minutes: number) => {
@@ -46,17 +46,16 @@ const Clock: React.FC = () => {
   return (
     <div className="clock-container widget-container" onClick={toggleTimeFormat}>
       <div className="clock-wrapper">
-        {is24HourFormat ? (
-          <p className="time">{formatTime(currentTime.hours24, currentTime.minutes)}</p>
-        ) : (
-          <>
-            <p>{currentTime.timeOfDay}</p>
-            <p className="time">{formatTime(currentTime.hours12, currentTime.minutes)}</p>
-          </>
-        )}
+        {!is24HourFormat && <p>{currentTime.timeOfDay}</p>}
+        <p className="time">
+          {formatTime(
+            is24HourFormat ? currentTime.hours24 : currentTime.hours12,
+            currentTime.minutes,
+          )}
+        </p>
       </div>
     </div>
   );
 };
 
-export default Clock;
+export { Clock };

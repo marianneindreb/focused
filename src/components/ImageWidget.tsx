@@ -6,4 +6,4 @@ const ImageWidget = () => {
   );
 };
 
-export default ImageWidget;
+export { ImageWidget };

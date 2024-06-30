@@ -1,14 +1,14 @@
-import MusicPlayer from './components/MusicPlayer';
-import Todo from './components/Todo';
-import Calendar from './components/Calendar';
-import Clock from './components/Clock';
-import PomodoroTimer from './components/PomodoroTimer';
-import WeatherWidget from './components/WeatherWidget';
-import WaterCounter from './components/WaterCounter';
-import MotivationalQuote from './components/MotivationalQuote';
-import ImageWidget from './components/ImageWidget';
-import DarkMode from './components/DarkMode';
+import { MusicPlayer } from './components/MusicPlayer/MusicPlayer';
+import { Todo } from './components/Todo';
+import { Calendar } from './components/Calendar';
+import { Clock } from './components/Clock';
+import { PomodoroTimer } from './components/PomodoroTimer';
+import { WeatherWidget } from './components/WeatherWidget';
+import { WaterCounter } from './components/WaterCounter';
+import { MotivationalQuote } from './components/MotivationalQuote';
+import { ImageWidget } from './components/ImageWidget';
 import './styles/app.scss';
+import { DarkModeToggle } from './components/DarkMode';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       <h1>
         What is your source of <strong>focus</strong> today?
       </h1>
-      <DarkMode />
+      <DarkModeToggle />
       <div className="app-container">
         <Todo />
         <Clock />
@@ -35,4 +35,4 @@ function App() {
   );
 }
 
-export default App;
+export { App };
