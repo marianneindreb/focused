@@ -1,0 +1,18 @@
+.clock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #313131;
+  color: white;
+
+  .clock-wrapper {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .time {
+    font-family: 'Cabin Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 5rem;
+  }
+}
