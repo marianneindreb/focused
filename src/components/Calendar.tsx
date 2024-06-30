@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react';
-
 interface DateObject {
-  date: number;
+  dayOfMonth: number;
   month: string;
 }
 
@@ -13,21 +11,16 @@ function getDate(): DateObject {
   const day = new Date();
   let month = day.toLocaleString('default', { month: 'long' });
   month = capitalizedMonth(month);
-  const date = day.getDate();
-  return { date, month };
+  const dayOfMonth = day.getDate();
+  return { dayOfMonth, month };
 }
 
 const Calendar: React.FC = () => {
-  const [currentDate, setCurrentDate] = useState<DateObject>({ date: 0, month: '' });
-
-  useEffect(() => {
-    setCurrentDate(getDate());
-  }, []);
-
+  const currentDate = getDate();
   return (
     <div className="calendar-container widget-container">
       <div className="date-wrapper">
-        <p className="date">{currentDate.date}</p>
+        <p className="date">{currentDate.dayOfMonth}</p>
         <p className="month">{currentDate.month}</p>
       </div>
     </div>

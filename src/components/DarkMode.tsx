@@ -3,12 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
 
-const DarkMode = () => {
-  const [theme, setTheme] = useState(localStorage.getItem('selectedTheme') || 'light');
+const LOCALSTORAGE_KEY = 'selectedTheme';
+
+const DarkModeToggle = () => {
+  const [theme, setTheme] = useState(localStorage.getItem(LOCALSTORAGE_KEY) || 'light');
 
   useEffect(() => {
     document.body.setAttribute('data-theme', theme);
-    localStorage.setItem('selectedTheme', theme);
+    localStorage.setItem(LOCALSTORAGE_KEY, theme);
   }, [theme]);
 
   const toggleTheme = () => {
@@ -23,4 +25,4 @@ const DarkMode = () => {
     </div>
   );
 };
-export { DarkMode };
+export { DarkModeToggle };

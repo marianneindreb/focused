@@ -1,14 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons';
-import { chillHop } from '../utils';
-
-interface Song {
-  id: string;
-  name: string;
-  cover: string;
-  audio: string;
-}
+import { SongItem, chillHop } from './song-config';
 
 interface SongInfo {
   currentTime: number;
@@ -16,8 +9,8 @@ interface SongInfo {
 }
 
 const MusicPlayer: React.FC = () => {
-  const [songs] = useState<Song[]>(chillHop());
-  const [currentSong, setCurrentSong] = useState<Song>(songs[0]);
+  const [songs] = useState<SongItem[]>(chillHop);
+  const [currentSong, setCurrentSong] = useState<SongItem>(songs[0]);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [songInfo, setSongInfo] = useState<SongInfo>({
     currentTime: 0,
@@ -26,8 +19,8 @@ const MusicPlayer: React.FC = () => {
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const playSong = () => {
-    setIsPlaying(!isPlaying);
+  const togglePlay = () => {
+    setIsPlaying((prevState) => !prevState);
   };
 
   useEffect(() => {
@@ -50,7 +43,7 @@ const MusicPlayer: React.FC = () => {
   const rangeHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     if (audioRef.current) {
       audioRef.current.currentTime = parseFloat(e.target.value);
-      setSongInfo({ ...songInfo, currentTime: parseFloat(e.target.value) });
+      setSongInfo((info) => ({ ...info, currentTime: parseFloat(e.target.value) }));
     }
   };
 
@@ -74,7 +67,7 @@ const MusicPlayer: React.FC = () => {
     }
   };
 
-  const selectSong = (song: Song) => {
+  const selectSong = (song: SongItem) => {
     setCurrentSong(song);
     if (isPlaying) {
       setTimeout(() => {
@@ -98,7 +91,7 @@ const MusicPlayer: React.FC = () => {
             type="range"
             min={0}
             onChange={rangeHandler}
-            max={songInfo.duration || 0}
+            max={songInfo.duration}
             value={songInfo.currentTime}
           />
         </div>
@@ -110,7 +103,7 @@ const MusicPlayer: React.FC = () => {
             onClick={() => skipTrackHandler('skip-back')}
           />
           <FontAwesomeIcon
-            onClick={playSong}
+            onClick={togglePlay}
             className="play"
             size="2x"
             icon={isPlaying ? faPause : faPlay}
@@ -134,6 +127,7 @@ const MusicPlayer: React.FC = () => {
             key={song.id}
             src={song.cover}
             alt={song.name}
+            role="button"
             onClick={() => selectSong(song)}
             className={`library-song ${song.id === currentSong.id ? 'library-song-selected' : ''}`}
           />

@@ -1,24 +1,22 @@
 .calendar-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include center();
 
   .date-wrapper {
     display: flex;
     align-items: flex-end;
-  }
 
-  .date {
-    font-family: 'Cabin Condensed', sans-serif;
-    font-weight: bold;
-    font-size: 5rem;
-    padding-right: 10px;
-  }
+    .date {
+      font-family: 'Cabin Condensed', sans-serif;
+      font-weight: bold;
+      font-size: 5rem;
+      padding-right: 10px;
+    }
 
-  .month {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #7b7b7b;
-    margin-bottom: 11px;
+    .month {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #7b7b7b;
+      margin-bottom: 11px;
+    }
   }
 }

@@ -10,6 +10,7 @@
   --widget_bg: white;
   --body_secondary: #242424;
 }
+
 [data-theme='dark'] {
   --body_bg: #242424;
   --body_color: white;
@@ -113,6 +114,7 @@ h1 {
   }
 }
 
+@import './mixins.scss';
 @import './todo';
 @import './music-player';
 @import './calendar';
