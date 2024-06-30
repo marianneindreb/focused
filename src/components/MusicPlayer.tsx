@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons';
-import chillHop from '../utils';
+import { chillHop } from '../utils';
 
 interface Song {
   id: string;
@@ -143,4 +143,4 @@ const MusicPlayer: React.FC = () => {
   );
 };
 
-export default MusicPlayer;
+export { MusicPlayer };

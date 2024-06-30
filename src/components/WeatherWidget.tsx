@@ -13,4 +13,4 @@ const WeatherWidget = () => {
   );
 };
 
-export default WeatherWidget;
+export { WeatherWidget };

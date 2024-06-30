@@ -6,4 +6,4 @@ const PomodoroTimer = () => {
   );
 };
 
-export default PomodoroTimer;
+export { PomodoroTimer };

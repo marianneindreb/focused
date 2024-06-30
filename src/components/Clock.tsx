@@ -59,4 +59,4 @@ const Clock: React.FC = () => {
   );
 };
 
-export default Clock;
+export { Clock };

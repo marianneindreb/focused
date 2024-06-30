@@ -23,5 +23,4 @@ const DarkMode = () => {
     </div>
   );
 };
-
-export default DarkMode;
+export { DarkMode };

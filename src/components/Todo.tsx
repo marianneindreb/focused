@@ -66,4 +66,4 @@ const Todo: React.FC = () => {
   );
 };
 
-export default Todo;
+export { Todo };
