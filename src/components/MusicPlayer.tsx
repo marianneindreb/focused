@@ -1,23 +1,38 @@
-import { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons';
 import chillHop from '../utils';
 
-const MusicPlayer = () => {
-  const [songs] = useState(chillHop());
-  const [currentSong, setCurrentSong] = useState(songs[0]);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [songInfo, setSongInfo] = useState({
+interface Song {
+  id: string;
+  name: string;
+  cover: string;
+  audio: string;
+}
+
+interface SongInfo {
+  currentTime: number;
+  duration: number;
+}
+
+const MusicPlayer: React.FC = () => {
+  const [songs] = useState<Song[]>(chillHop());
+  const [currentSong, setCurrentSong] = useState<Song>(songs[0]);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [songInfo, setSongInfo] = useState<SongInfo>({
     currentTime: 0,
     duration: 0,
   });
-  const audioRef = useRef(null);
+
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const playSong = () => {
     setIsPlaying(!isPlaying);
   };
 
   useEffect(() => {
+    if (!audioRef.current) return;
+
     if (isPlaying) {
       audioRef.current.play();
     } else {
@@ -25,18 +40,21 @@ const MusicPlayer = () => {
     }
   }, [isPlaying]);
 
-  const timeUpdate = (e) => {
-    const current = e.target.currentTime;
-    const duration = e.target.duration;
+  const timeUpdate: React.ReactEventHandler<HTMLAudioElement> = (e) => {
+    const target = e.target as HTMLAudioElement;
+    const current = target.currentTime;
+    const duration = target.duration;
     setSongInfo({ ...songInfo, currentTime: current, duration });
   };
 
-  const rangeHandler = (e) => {
-    audioRef.current.currentTime = e.target.value;
-    setSongInfo({ ...songInfo, currentTime: e.target.value });
+  const rangeHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = parseFloat(e.target.value);
+      setSongInfo({ ...songInfo, currentTime: parseFloat(e.target.value) });
+    }
   };
 
-  const skipTrackHandler = (direction) => {
+  const skipTrackHandler = (direction: 'skip-forward' | 'skip-back') => {
     let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
     if (direction === 'skip-forward') {
       setCurrentSong(songs[(currentIndex + 1) % songs.length]);
@@ -49,16 +67,20 @@ const MusicPlayer = () => {
     }
     if (isPlaying) {
       setTimeout(() => {
-        audioRef.current.play();
+        if (audioRef.current) {
+          audioRef.current.play();
+        }
       }, 100);
     }
   };
 
-  const selectSong = (song) => {
+  const selectSong = (song: Song) => {
     setCurrentSong(song);
     if (isPlaying) {
       setTimeout(() => {
-        audioRef.current.play();
+        if (audioRef.current) {
+          audioRef.current.play();
+        }
       }, 100);
     }
   };
