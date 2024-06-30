@@ -1,11 +1,17 @@
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 
-const Todo = () => {
-  const [goals, setGoals] = useState([]);
-  const [newGoal, setNewGoal] = useState('');
+interface Goal {
+  id: number;
+  goalName: string;
+  checked: boolean;
+}
+
+const Todo: React.FC = () => {
+  const [goals, setGoals] = useState<Goal[]>([]);
+  const [newGoal, setNewGoal] = useState<string>('');
 
   const addGoal = () => {
-    const goal = {
+    const goal: Goal = {
       id: goals.length + 1,
       goalName: newGoal,
       checked: false,
@@ -14,17 +20,17 @@ const Todo = () => {
     setNewGoal('');
   };
 
-  const deleteGoal = (id) => {
+  const deleteGoal = (id: number) => {
     setGoals(goals.filter((goal) => goal.id !== id));
   };
 
-  const checkGoal = (id) => {
+  const checkGoal = (id: number) => {
     setGoals(
       goals.map((goal) => (goal.id === id ? { ...goal, checked: !goal.checked } : goal)),
     );
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNewGoal(e.target.value);
   };
 
