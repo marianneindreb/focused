@@ -1,1 +1,56 @@
+.pomodoro-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  .timer-progress {
+    @include center();
+    margin-bottom: 70px;
+
+    .circle-timer {
+      width: 270px;
+      height: 270px;
+    }
+
+    .circle-background {
+      stroke-width: 3;
+      fill: none;
+    }
+
+    .circle-progress {
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-dasharray: 283;
+      stroke-dashoffset: 283;
+      fill: none;
+      transform-origin: 50% 50%;
+      transform: rotate(-90deg);
+      transition: stroke-dashoffset 1s linear;
+    }
+
+    .timer {
+      fill: black;
+      font-size: 1.3rem;
+    }
+  }
+
+  button {
+    padding: 15px 80px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px;
+    border-radius: 8px;
+  }
+
+  button:hover {
+    background-color: #424242;
+    cursor: pointer;
+  }
+
+  p {
+    font-size: 28px;
+    text-align: center;
+    padding-bottom: 40px;
+  }
+}

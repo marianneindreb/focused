@@ -1,4 +1,3 @@
-//<FontAwesomeIcon icon="fa-light fa-moon" />
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
