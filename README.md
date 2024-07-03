@@ -9,7 +9,7 @@ Focused is aimed to be a productivity companion, designed to help you stay focus
 - [x] **Clock**: Keep track of the time with a customizable clock. The clock is clickable if you want to change the time format.
 - [x] **Calendar**: Easily keep track of today's date.
 - [x] **Motivational Quote**: Get inspired with a daily motivational quote.
-- [ ] **Pomodoro Timer**: Manage your work sessions and breaks with the Pomodoro technique.
+- [x] **Pomodoro Timer**: Manage your work sessions and breaks with the Pomodoro technique.
 - [ ] **Water Tracker**: Stay hydrated by logging your daily water intake.
 - [ ] **Weather Widget**: Check the current weather conditions to plan your day better.
 - [ ] **Image Display**: Customize your workspace by displaying your favorite photo.
