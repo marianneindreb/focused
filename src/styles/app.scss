@@ -9,6 +9,7 @@
   --body_color: #242424;
   --widget_bg: white;
   --body_secondary: #242424;
+  --button_bg: #242424;
 }
 
 [data-theme='dark'] {
@@ -16,6 +17,7 @@
   --body_color: white;
   --widget_bg: #313131;
   --body_secondary: #7b7b7b;
+  --button_bg: #7b7b7b;
 }
 
 body {
@@ -26,6 +28,12 @@ body {
 h1 {
   font-weight: normal;
   padding: 20px;
+}
+
+button {
+  background-color: var(--button_bg);
+  color: var(--body_bg);
+  border: none;
 }
 
 .top-wrapper {
