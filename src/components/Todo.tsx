@@ -1,4 +1,6 @@
 import { useState, ChangeEvent } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 interface Goal {
   id: number;
@@ -39,14 +41,14 @@ const Todo: React.FC = () => {
   return (
     <div className="todo-container widget-container">
       <h3>Set today's goals</h3>
-      <div className="input-container">
+      <div className="input-wrapper">
         <input
           type="text"
           placeholder="New goal.."
           value={newGoal}
           onChange={handleInputChange}
         />
-        <button onClick={addGoal}>+</button>
+        <FontAwesomeIcon onClick={addGoal} icon={faPlus} className="add-button" />
       </div>
       <div className="goals-container">
         {goals.map((goal) => (
@@ -58,7 +60,12 @@ const Todo: React.FC = () => {
                 onChange={() => toggleCheck(goal.id)}
               />
               <p className={goal.checked ? 'checked' : ''}> {goal.goalName} </p>
-              <button onClick={() => deleteGoal(goal.id)}>X</button>
+
+              <FontAwesomeIcon
+                onClick={() => deleteGoal(goal.id)}
+                icon={faTrash}
+                className="delete-button"
+              />
             </div>
             <hr />
           </div>
