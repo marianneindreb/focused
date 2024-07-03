@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ClockObject {
   hours12: number;
@@ -6,6 +6,8 @@ interface ClockObject {
   minutes: number;
   timeOfDay: string;
 }
+
+const LOCALSTORAGE_KEY = 'selectedTimeFormat';
 
 function getTime(): ClockObject {
   const time = new Date();
@@ -24,7 +26,11 @@ function getTime(): ClockObject {
 
 const Clock: React.FC = () => {
   const [currentTime, setCurrentTime] = useState<ClockObject>(getTime());
-  const [is24HourFormat, setIs24HourFormat] = useState<boolean>(false);
+
+  const [is24HourFormat, setIs24HourFormat] = useState<boolean>(() => {
+    const storedFormat = localStorage.getItem(LOCALSTORAGE_KEY);
+    return storedFormat ? JSON.parse(storedFormat) : false;
+  });
 
   useEffect(() => {
     const timeInterval = setInterval(() => {
@@ -34,8 +40,12 @@ const Clock: React.FC = () => {
     return () => clearInterval(timeInterval);
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(is24HourFormat));
+  }, [is24HourFormat]);
+
   const toggleTimeFormat = () => {
-    setIs24HourFormat((prevState) => !prevState);
+    setIs24HourFormat((prevFormat) => !prevFormat);
   };
 
   const formatTime = (hours: number, minutes: number) => {
